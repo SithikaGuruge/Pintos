@@ -142,8 +142,7 @@ pintos_init (void)
                 printf("Sithika Guruge: 210201F\n") ; 
               } else if (strcmp(arr,"shutdown") == 0) {
                 printf("Shutting Down...\n") ; 
-                shutdown(); 
-                thread_exit();
+                shutdown_power_off();
               } else if (strcmp(arr,"time") == 0) {
                 printf("number of seconds passed since Unix epoch - %lu s\n", rtc_get_time());
               } else if (strcmp(arr,"ram") == 0) {
