@@ -71,6 +71,7 @@ static void locate_block_device (enum block_type, const char *name);
 #endif
 
 int pintos_init (void) NO_RETURN;
+void read(char line[], int size);
 
 /* Pintos main entry point. */
 int
@@ -128,13 +129,14 @@ pintos_init (void)
 #endif
 
   printf ("Boot complete.\n");
+  printf ("Welcome to Pintos...\n");
   
   if (*argv != NULL) {
     /* Run actions specified on kernel command line. */
     run_actions (argv);
   } else {
         while(1) {
-              printf("CS2042> ");
+              printf("CS2043> ");
               char arr[16];
               read (arr, 16);
               
@@ -146,7 +148,7 @@ pintos_init (void)
               } else if (strcmp(arr,"time") == 0) {
                 printf("number of seconds passed since Unix epoch - %lu s\n", rtc_get_time());
               } else if (strcmp(arr,"ram") == 0) {
-                printf("Aamount of RAM available for the OS : %u KB\n", init_ram_pages * PGSIZE/1024);
+                printf("Amount of RAM available for the OS : %u KB\n", init_ram_pages * PGSIZE/1024);
               } else if (strcmp(arr,"thread") == 0) {
                 thread_print_stats();
               } else if (strcmp(arr,"priority") == 0) {
@@ -167,7 +169,7 @@ pintos_init (void)
   thread_exit ();
 }
 
-void read(char line[], size_t size) {
+void read(char line[], int size) {
     char c;
     char* pos = line;
 
